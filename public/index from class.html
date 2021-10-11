@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+
+
+
+Enter First Name:<br>
+<input type="text" id="firstName"><br>
+<button onclick="addContact()">Submit</button> 
+
+
+
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+<script>
+function addContact(){
+   var firstName = document.getElementById('firstName').value;
+   console.log(firstName);
+   var url = `/add?firstName=${firstName}`;
+
+   superagent
+       .get(url)
+       .end(function(err, res){
+           if (err) {
+               console.log('err:',err);
+           } else {
+               console.log('response:',res.text);
+           }
+       });
+}
+</script>
+
+
+</html>
+
+
+

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+
+
+
+Input:<br>
+<input type="text" placeholder = "First Name" id="firstName"><br>
+<input type="text" placeholder = "Last Name" id="lastName"><br>
+<input type="text" placeholder = "Phone Number" id="phoneNumber"><br>
+<input type="text" placeholder = "Email" id="email"><br>
+<input type="text" placeholder = "University" id="university"><br>
+<input type="text" placeholder = "Major" id="major"><br>
+<button onclick="addContact()">Submit</button> 
+
+
+
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+<script>
+function addContact(){
+   var firstName = document.getElementById('firstName').value;
+   var lastName = document.getElementById('lastName').value;
+   var phoneNumber = document.getElementById('phoneNumber').value;
+   var email = document.getElementById('email').value;
+   var university = document.getElementById('university').value;
+   var major = document.getElementById('major').value;
+   console.log(firstName);
+   console.log(lastName);
+   console.log(phoneNumber);
+   console.log(email);
+   console.log(university);
+   console.log(major);
+
+   var url = `/add?firstName=${firstName}&lastName=${lastName}&phoneNumber=${phoneNumber}&email=${email}&university=${university}&major=${major}`;
+
+   superagent
+       .get(url)
+       .end(function(err, res){
+           if (err) {
+               console.log('err:',err);
+           } else {
+               console.log('response:',res.text);
+           }
+       });
+}
+</script>
+
+
+</html>
+
+
+

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+
+
+
+</head>
+
+<body>
+Contacts in DB
+<button onclick="readContacts()">Read</button>
+<div id="output"></div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+<script>
+function readContacts(){
+   var url = '/read';
+
+   superagent
+       .get(url)
+       .end(function(err, res){
+           if (err) {
+               console.log('err:',err);
+           } else {
+               console.log('response:',res.text);
+               document.body.append(res.text)
+               //return res.text
+
+           }
+
+       });
+
+	
+}
+
+</script>
+
+<!--div style=color:blue><script>document.write(readContacts())</script></div>-->
+
+</html>
+
+
+
